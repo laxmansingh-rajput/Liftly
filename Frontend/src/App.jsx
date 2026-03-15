@@ -23,7 +23,9 @@ function App() {
         </div>
         <button
           className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={() => {
+            window.location.href = 'http://localhost:3000/auth/google'
+          }}
         >
           Count is {count}
         </button>
