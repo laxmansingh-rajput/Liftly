@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import house from '../assets/house.svg'
 import hat from '../assets/hat.svg'
-import { goTo } from '../controller/clickHandler'
+import { goTo, google } from '../controller/clickHandler'
 
 const Landing = () => {
     const navigate = useNavigate()
@@ -57,12 +57,14 @@ const Landing = () => {
                     </div>
                 </div>
                 <div className='w-full h-15  p-2 rounded-xl bg-primary-button text-[#ffff] flex items-center justify-center font-semibold text-2xl hover:bg-black cursor-pointer hover:scale-95 transition-all ease-in duration-100'
+                    onClick={() => google()}
                 >
                     Get Started
                 </div>
                 <div className='text-sm flex items-center justify-center gap-1'>
                     Already have an account?
-                    <div className='font-semibold text-primary-link cursor-pointer' onClick={() => goTo(navigate, 'login')}>
+                    <div className='font-semibold text-primary-link cursor-pointer'
+                        onClick={() => goTo(navigate, 'login')}>
                         Log in
                     </div>
                 </div>

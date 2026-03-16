@@ -7,17 +7,20 @@ export const createAccessToken = (data) => {
             expiresIn: '15m'
         })
         return token
-    } catch(err) {
+    } catch (err) {
+        console.log(err)
         return null
     }
 }
-export const createRefreshToken = (data) => {
+
+export const createRefershToken = (data) => {
     try {
         let token = jwt.sign(data, process.env.jwtSecret, {
             expiresIn: '7d'
         })
         return token
-    } catch(err) {
+    } catch (err) {
+        console.log(err)
         return null
     }
 }

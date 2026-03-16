@@ -22,7 +22,7 @@ passport.use(new GoogleStrategy({
                 details = await queryUser(connection, profile._json.email)
             }
             return cb(null, details)
-        } catch(err) {
+        } catch (err) {
             console.log(err)
             return cb(err, null)
         }
@@ -30,14 +30,21 @@ passport.use(new GoogleStrategy({
 ));
 
 router.get('/google',
-    passport.authenticate('google', { scope: ['profile', 'email'] }));
+    passport.authenticate('google', {
+        scope: ['profile', 'email'],
+        hd: 'medicaps.ac.in',
+        session: false
+    }));
 
 router.get('/google/callback',
-    passport.authenticate('google', { failureRedirect: `${process.env.Frontend}/login` }),
+    passport.authenticate('google', {
+        failureRedirect: `${process.env.Frontend}/`, session: false
+    }),
     function (req, res) {
         try {
+            console.log(req.user)
+            let details = req.user
 
-            let details = req.details
             let data = {
                 id: details[0],
                 email: details[1],
@@ -52,6 +59,7 @@ router.get('/google/callback',
             if (!accessToken || !refreshToken) {
                 return res.status(500).json({ error: 'Token generation failed' });
             }
+
 
             res.cookie('accessToken', accessToken, {
                 maxAge: 900000,
@@ -70,8 +78,8 @@ router.get('/google/callback',
             if (!details[4]) {
                 res.redirect(`${process.env.Frontend}/form`);
             }
-            res.redirect(`${process.env.Frontend}/`);
-        } catch(err) {
+            res.redirect(`${process.env.Frontend}/home`);
+        } catch (err) {
             return res.status(500).json({ error: 'Something went wrong' });
         }
     }
