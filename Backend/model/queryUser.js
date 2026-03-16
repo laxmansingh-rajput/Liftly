@@ -50,3 +50,16 @@ export const editProfile = async (name, password, id) => {
 }
 
 
+export const editPhone = async (phone, id) => {
+    try {
+        await connection.execute(
+            `UPDATE users SET phoneNumber = ? WHERE id = ?`,
+            [phone, id]
+        );
+        return true;
+    } catch (err) {
+        console.log(err)
+        return false;
+    }
+}
+

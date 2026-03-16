@@ -19,6 +19,7 @@ export const fetchDetails = async (next, setnext, setdetails, file) => {
             { withCredentials: true }
         );
         let data = response.data
+        console.log(data)
         if (data.name != null && data.password != null && data.phoneNo != null) {
             let details = {
                 name: data.name,
@@ -32,10 +33,10 @@ export const fetchDetails = async (next, setnext, setdetails, file) => {
                 setnext('phone')
                 if (file == 'form')
                     window.location.href = 'http://localhost:5173/phone'
-
             } else {
                 window.location.href = 'http://localhost:5173/home'
             }
+            
         }
     } catch (error) {
         console.log(error);
