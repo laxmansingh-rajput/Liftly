@@ -6,7 +6,7 @@ import { useDetails } from '../customHooks/useDetails'
 import axios from 'axios'
 
 const form = () => {
-    const [next, setnext, details, setdetails] = useDetails()
+    const [next, setnext, details, setdetails] = useDetails('form')
     const [pass, setpass] = useState("")
     const [passtwo, setpasstwo] = useState("")
     const [error, seterror] = useState(null)

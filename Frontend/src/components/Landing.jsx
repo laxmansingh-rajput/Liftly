@@ -12,7 +12,7 @@ import axios from "axios";
 
 const Landing = () => {
     const navigate = useNavigate()
-    const [next, setnext, details, setdetails] = useDetails()
+    const [next, setnext, details, setdetails] = useDetails('landing')
    
     return (
         <div className='h-full w-full flex flex-col items-center bg-primary-background py-8 px-5 text-primary-title'>

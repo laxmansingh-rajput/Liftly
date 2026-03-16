@@ -12,7 +12,7 @@ export const google = (next) => {
         window.location.href = 'http://localhost:3000/auth/google';
 }
 
-export const fetchDetails = async (next, setnext, setdetails) => {
+export const fetchDetails = async (next, setnext, setdetails, file) => {
     try {
         const response = await axios.get(
             "http://localhost:3000/details",
@@ -30,6 +30,9 @@ export const fetchDetails = async (next, setnext, setdetails) => {
                 setnext('form')
             } else if (!data.phoneNo) {
                 setnext('phone')
+                if (file == 'form')
+                    window.location.href = 'http://localhost:5173/phone'
+
             } else {
                 window.location.href = 'http://localhost:5173/home'
             }
