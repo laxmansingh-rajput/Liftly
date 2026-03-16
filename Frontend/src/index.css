@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+    --color-primary-background: #ffffff;
+    --color-primary-card-background: #f8faff;
+    --color-primary-card-border: #e2e8f0;
+    --color-primary-button: #1e40af;
+    --color-primary-title: #1e293b;
+    --color-primary-subtitle: #94a3b8;
+    --color-primary-link: #3b82f6;
+
+}
+
+/* 
+Logo background: #f0f4ff — pale blue tint
+"Go to College" icon bg: #ecfdf5 — mint green tint
+"Go from College" icon bg: #eff6ff — light blue tint */
