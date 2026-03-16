@@ -12,6 +12,8 @@ function App() {
           <Route path="/form" element={<Layout page={'form'} />} />
           <Route path="/verify" element={<Layout page={'verify'} />} />
           <Route path="/login" element={<Layout page={'login'} />} />
+          <Route path="/phone" element={<Layout page={'phone'} />} />
+          <Route path="/home" element={<Layout page={'home'} />} />
         </Routes>
       </BrowserRouter>
 

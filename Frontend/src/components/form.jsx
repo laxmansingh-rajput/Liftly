@@ -1,6 +1,70 @@
 import React from 'react'
 import logo from '../assets/logo.png'
+import { useEffect, useState } from 'react'
+import { fetchDetails } from '../controller/clickHandler'
+import { useDetails } from '../customHooks/useDetails'
+import axios from 'axios'
+
 const form = () => {
+    const [next, setnext, details, setdetails] = useDetails()
+    const [pass, setpass] = useState("")
+    const [passtwo, setpasstwo] = useState("")
+    const [error, seterror] = useState(null)
+
+    const handelPassChange = (e) => {
+        let a = e.target.value
+        setpass(a)
+    }
+    const handelPassTwoChange = (e) => {
+        let a = e.target.value
+        setpasstwo(a)
+    }
+    const errorMaker = (message) => {
+        setTimeout(() => {
+            seterror('')
+        }, 3000);
+        seterror(message)
+    }
+    const handelNameChange = (e) => {
+        setdetails({
+            ...details,
+            name: e.target.value
+        })
+    }
+
+    const handelProceed = async () => {
+
+        if (details.name === "" || pass === "" || passtwo === "") {
+            errorMaker('Please enter all the fields')
+            return
+        }
+        if (pass.length < 8) {
+            errorMaker('Password must be of minimum 8 length')
+            return
+        }
+        if (pass !== passtwo) {
+            errorMaker('Passwords not matching')
+            setpass("")
+            setpasstwo("")
+            return
+        }
+        const newDetails = {
+            ...details,
+            password: pass
+        }
+        setdetails(newDetails)
+        const response = await axios.post(
+            "http://localhost:3000/form",
+            newDetails,
+            { withCredentials: true }
+        )
+        if (response.data.success) {
+            window.location.href = 'http://localhost:5173/phone';
+        } else if (response.data.error && response.data.error == 'Cookies not found') {
+            window.location.href = 'http://localhost:5173/';
+        }
+        console.log(response.data)
+    }
     return (
         <div className='h-full w-full bg-primary-background text-primary-title flex flex-col items-center 
         justify-center px-5 py-5 gap-5'>
@@ -22,24 +86,29 @@ const form = () => {
                     <div className='text-sm font-semibold'>
                         Name*
                     </div>
-                    <input type="text" className='border-2 h-10 rounded-md w-full px-2' />
+                    <input type="text" className='border-2 h-10 rounded-md w-full px-2' value={(details.name) ? details.name : ""}
+                        onChange={(e) => handelNameChange(e)} />
                 </div>
                 <div className='w-full flex flex-col gap-2'>
                     <div className='text-sm font-semibold h-5'>
                         Password*
                     </div>
-                    <input type="text" className='border-2 h-10 rounded-md w-full px-2' />
+                    <input type="text" className='border-2 h-10 rounded-md w-full px-2' value={pass}
+                        onChange={(e) => handelPassChange(e)} />
                 </div>
                 <div className='w-full flex flex-col gap-2'>
                     <div className='text-sm font-semibold h-5'>
                         Confirm Password*
                     </div>
-                    <input type="text" className='border-2 h-10 rounded-md w-full px-2' />
+                    <input type="text" className='border-2 h-10 rounded-md w-full px-2' value={passtwo}
+                        onChange={(e) => handelPassTwoChange(e)} />
                 </div>
                 <div className='w-full flex flex-col gap-2'>
-                    <div className='text-sm font-semibold h-5'>
+                    <div className='text-sm font-semibold h-5 text-red-600 w-full text-center'>
+                        {error}
                     </div>
-                    <button className='h-10 w-full bg-primary-button rounded-md text-primary-background font-semibold'>
+                    <button className='h-10 w-full bg-primary-button rounded-md text-primary-background font-semibold'
+                        onClick={() => handelProceed()}>
                         Proceed
                     </button>
                 </div>

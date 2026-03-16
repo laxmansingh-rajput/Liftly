@@ -3,13 +3,16 @@ import Landing from "./landing"
 import Form from "./form";
 import Verify from "./verify";
 import Login from "./login";
-
+import Phone from "./phone";
+import Home from "./home";
 const Layout = ({ page }) => {
     const pages = {
         'Landing': <Landing />,
         'form': <Form />,
         'verify': <Verify />,
         'login': <Login />,
+        'phone': <Phone />,
+        'home': <Home />,
     };
 
     return (
