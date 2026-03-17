@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 export const goTo = (navigate, page) => {
     navigate(`/${page}`)
 }
@@ -19,11 +20,10 @@ export const fetchDetails = async (next, setnext, setdetails, file, setloader) =
             { withCredentials: true }
         );
         let data = response.data
-        console.log(data)
         if (data.name != null && data.password != null && data.phoneNo != null) {
             let details = {
                 name: data.name,
-                password: data.password,
+                password: data.phoneNo,
                 phoneNo: data.phoneNo,
             }
             setdetails(details)
@@ -36,7 +36,12 @@ export const fetchDetails = async (next, setnext, setdetails, file, setloader) =
             } else {
                 window.location.href = 'http://localhost:5173/home'
             }
-setloader(false)
+            setloader(false)
+        } else {
+            setloader(false)
+            if (file == 'form' || file == 'phone') {
+                window.location.href = 'http://localhost:5173/'
+            }
         }
     } catch (error) {
         console.log(error);

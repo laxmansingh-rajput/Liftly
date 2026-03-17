@@ -1,7 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.png'
 import { useEffect, useState } from 'react'
-import { fetchDetails } from '../controller/clickHandler'
 import { useDetails } from '../customHooks/useDetails'
 import open from '../assets/open.svg'
 import close from '../assets/close.svg'
@@ -120,7 +119,7 @@ const form = () => {
                                 <div className='text-sm font-semibold h-5 text-red-600 w-full text-center'>
                                     {error}
                                 </div>
-                                <button className='h-10 w-full bg-primary-button rounded-md text-primary-background font-semibold'
+                                <button className='h-10 w-full bg-primary-button rounded-md text-primary-background font-semibold hover:bg-black cursor-pointer hover:scale-95 transition-all ease-in duration-100'
                                     onClick={() => handelProceed()}>
                                     Proceed
                                 </button>

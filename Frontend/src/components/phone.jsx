@@ -8,7 +8,7 @@ import { useDetails } from '../customHooks/useDetails'
 
 const Phone = () => {
   const [load, setload] = useState(false)
-  const [next, setnext, details, setdetails] = useDetails('phone', load)
+  const [next, setnext, details, setdetails] = useDetails('phone', setload)
   const [lock, setlock] = useState(false)
   const [phone, setPhone] = useState("")
   const [otp, setOtp] = useState(["", "", "", "", "", ""])

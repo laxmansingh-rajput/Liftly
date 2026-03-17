@@ -1,5 +1,5 @@
 import connection from "../confiq/connection.js";
-export const queryUser = async (email) => {
+export const queryUserByEmail = async (email) => {
     try {
         let [rows] = await connection.execute(
             `SELECT * FROM users WHERE emailId = ?`,
