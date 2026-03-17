@@ -12,7 +12,7 @@ export const google = (next) => {
         window.location.href = 'http://localhost:3000/auth/google';
 }
 
-export const fetchDetails = async (next, setnext, setdetails, file) => {
+export const fetchDetails = async (next, setnext, setdetails, file, setloader) => {
     try {
         const response = await axios.get(
             "http://localhost:3000/details",
@@ -36,7 +36,7 @@ export const fetchDetails = async (next, setnext, setdetails, file) => {
             } else {
                 window.location.href = 'http://localhost:5173/home'
             }
-            
+setloader(false)
         }
     } catch (error) {
         console.log(error);

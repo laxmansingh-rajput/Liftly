@@ -5,17 +5,19 @@ import house from '../assets/house.svg'
 import hat from '../assets/hat.svg'
 import { goTo, google } from '../controller/clickHandler'
 import { useEffect, useState } from 'react'
-import { fetchDetails } from '../controller/clickHandler'
 import { useDetails } from '../customHooks/useDetails'
-
+import Loader from './loader'
 import axios from "axios";
 
 const Landing = () => {
     const navigate = useNavigate()
-    const [next, setnext, details, setdetails] = useDetails('landing')
-   
+    const [load, setload] = useState(true)
+    const [next, setnext, details, setdetails] = useDetails('landing', load)
+
     return (
         <div className='h-full w-full flex flex-col items-center bg-primary-background py-8 px-5 text-primary-title'>
+            {
+(load)? <Loader/>:<div className='h-full w-full flex flex-col items-center '>
             <div className='h-4/5 w-full  flex flex-col items-center gap-3'>
                 <img className='h-35 select-none' src={logo} alt="" />
                 <div className='w-full flex flex-col items-center justify-center gap-1'>
@@ -76,6 +78,8 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
+            </div>
+            }
         </div>
     )
 }
