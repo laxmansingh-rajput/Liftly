@@ -34,16 +34,18 @@ export const fetchDetails = async (next, setnext, setdetails, file, setloader) =
                 if (file == 'form')
                     window.location.href = 'http://localhost:5173/phone'
             } else {
-                window.location.href = 'http://localhost:5173/home'
+                if (file == 'phone' || file == "form")
+                    window.location.href = 'http://localhost:5173/home'
             }
             setloader(false)
         } else {
             setloader(false)
-            if (file == 'form' || file == 'phone') {
+            if (file != 'landing') {
                 window.location.href = 'http://localhost:5173/'
             }
         }
     } catch (error) {
         console.log(error);
+        setloader(false)
     }
 };

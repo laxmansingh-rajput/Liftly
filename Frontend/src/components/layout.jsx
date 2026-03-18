@@ -1,18 +1,23 @@
 import React from "react";
 import Landing from "./landing"
 import Form from "./form";
-import Verify from "./verify";
 import Login from "./login";
 import Phone from "./phone";
 import Home from "./home";
+import Rider from "./rider";
+import Profile from "./profile";
+import Ride from "./ride";
+
 const Layout = ({ page }) => {
     const pages = {
         'Landing': <Landing />,
         'form': <Form />,
-        'verify': <Verify />,
         'login': <Login />,
         'phone': <Phone />,
         'home': <Home />,
+        'rider': <Rider />,
+        'profile': <Profile />,
+        'ride': <Ride />,
     };
 
     return (

@@ -7,7 +7,6 @@ import { goTo, google } from '../controller/clickHandler'
 import { useEffect, useState } from 'react'
 import { useDetails } from '../customHooks/useDetails'
 import Loader from './loader'
-import axios from "axios";
 
 const Landing = () => {
     const navigate = useNavigate()

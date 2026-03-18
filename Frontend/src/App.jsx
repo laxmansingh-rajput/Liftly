@@ -10,10 +10,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout page={'Landing'} />} />
           <Route path="/form" element={<Layout page={'form'} />} />
-          <Route path="/verify" element={<Layout page={'verify'} />} />
           <Route path="/login" element={<Layout page={'login'} />} />
           <Route path="/phone" element={<Layout page={'phone'} />} />
           <Route path="/home" element={<Layout page={'home'} />} />
+          <Route path="/rider" element={<Layout page={'rider'} />} />
+          <Route path="/profile" element={<Layout page={'profile'} />} />
+          <Route path="/ride" element={<Layout page={'ride'} />} />
         </Routes>
       </BrowserRouter>
 
