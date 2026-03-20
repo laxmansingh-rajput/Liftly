@@ -8,7 +8,8 @@ const Nav = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='absolute bottom-0 left-0 h-12 w-full flex items-center justify-around p-2 border-t-2 rounded-t-md border-primary-button z-50'>
+        <div className='absolute bottom-0 left-0 h-12 w-full flex items-center justify-around p-2 border-t-2 rounded-t-md  
+        bg-primary-background border-primary-button z-50'>
 
             <div className='flex flex-col items-center justify-center'>
                 <img

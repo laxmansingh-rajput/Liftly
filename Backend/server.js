@@ -6,6 +6,7 @@ import cors from "cors";
 import authRoutes from './routes/auth.js'
 import formRoutes from './routes/form.js'
 import detailsRoutes from './routes/details.js'
+import feedRoutes from './routes/feed.js'
 
 const app = express()
 
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes)
 app.use('/form', formRoutes)
 app.use('/details', detailsRoutes)
+app.use('/feed', feedRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on process.env.PORT ${process.env.PORT}`)

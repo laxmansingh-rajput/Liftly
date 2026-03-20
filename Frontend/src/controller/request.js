@@ -4,7 +4,7 @@ export const sendLoginDetails = async (data) => {
   try {
     let response = await axios.post('http://localhost:3000/auth/login', data,
       {
-        Credential: true
+        withCredentials: true
       })
     return response.data
   } catch {
@@ -35,5 +35,21 @@ export const getCoordinates = async (placeId) => {
   } catch (error) {
     console.error("Coordinate Fetch Error:", error);
     throw error;
+  }
+};
+
+export const sendRiderDetails = async (data) => {
+  try {
+    let response = await axios.post(
+      'http://localhost:3000/feed/rider-details',
+      data,
+      {
+        withCredentials: true
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };

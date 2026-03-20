@@ -1,0 +1,13 @@
+<svg width="64" height="96" viewBox="0 0 64 96" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Shadow -->
+  <ellipse cx="32" cy="90" rx="10" ry="4" fill="rgba(0,0,0,0.15)" />
+  <!-- Rod -->
+  <rect x="30" y="40" width="4" height="45" rx="2" fill="#444" />
+  <!-- Circular board (outer white border) -->
+  <circle cx="32" cy="28" r="18" fill="white"/>
+  <!-- Red circle -->
+  <circle cx="32" cy="28" r="15" fill="#DC2626"/>
+  <!-- Inner white dot -->
+  <circle cx="32" cy="28" r="5" fill="white"/>
+
+</svg>

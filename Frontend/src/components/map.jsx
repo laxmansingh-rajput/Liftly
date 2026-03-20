@@ -39,6 +39,7 @@ const DirectionsRenderer = ({ source, destination, setpath }) => {
 
         return () => directionsRenderer.setMap(null);
     }, [directionsService, directionsRenderer, source, destination]);
+    
     return null;
 };
 

@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className='h-screen w-full relative'>
       {
-        load ? <Loader /> : <div className='w-full  flex flex-col items-center bg-primary-card-background h-screen overflow-y-auto relative'>
+        load ? <Loader /> : <div className='w-full  flex flex-col items-center bg-primary-background h-screen overflow-y-auto relative'>
 
           <Nav />
         </div>
