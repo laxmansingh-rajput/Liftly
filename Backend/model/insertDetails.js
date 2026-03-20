@@ -7,10 +7,10 @@ const polylineToLineString = (encoded) => {
 
     let toReturn = [];
     coords.forEach(([lat, lng]) => {
-        toReturn.push(`${lng} ${lat}`); // swap lat/lng for MySQL
+        toReturn.push(`${lng} ${lat}`);
     });
 
-    return toReturn.join(", "); // string ready for LINESTRING
+    return toReturn.join(", ");
 };
 
 export const insertIntoRider = async (Id, data) => {
@@ -18,11 +18,21 @@ export const insertIntoRider = async (Id, data) => {
         const lineString = `LINESTRING(${polylineToLineString(data.path)})`;
         const sourcePoint = `POINT(${data.source.lng} ${data.source.lat})`;
         const destPoint = `POINT(${data.destination.lng} ${data.destination.lat})`;
-        
-        await connection.execute(
-            `INSERT INTO rider(Id, source, destination, path, source_location, destination_location,current_location)
-             VALUES(?, ?, ?, ST_GeomFromText(?), ST_GeomFromText(?), ST_GeomFromText(?), ST_GeomFromText(?))`,
-            [Id, data.source.name, data.destination.name, lineString, sourcePoint, destPoint, sourcePoint]
+        console.log(data)
+        await connection.execute(`INSERT INTO rider(Id, sourceName, destinationName,path, polyLine,sourceCoordinate,destinationCoordinate, currentCoordinate,paired, paid, vehicleNo)VALUES(?, ?, ?,ST_GeomFromText(?, 4326), ?, ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),?, ?, ?)`,
+            [
+                Id,
+                data.source?.name ?? null,
+                data.destination?.name ?? null,
+                lineString,
+                data.path ?? null,
+                sourcePoint,
+                destPoint,
+                sourcePoint,
+                0,
+                (data.rideType == 0) ? 0 : 1,
+                data.vehicleNo
+            ]
         );
 
         console.log("Rider inserted successfully!");

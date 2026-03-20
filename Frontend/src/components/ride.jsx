@@ -150,7 +150,7 @@ const Ride = () => {
                                 />
                             </div>
 
-                            <div className=' flex items-center justify-center gap-3   '>
+                            <div className=' flex items-center justify-center gap-3 relative  '>
                                 <div className='flex flex-col items-start h-20 w-1/2 justify-start gap-2 '>
                                     <label className='text-sm text-primary-subtitle'>PATH</label>
                                     <div className='flex items-center justify-start gap-3 w-full'>
@@ -172,7 +172,7 @@ const Ride = () => {
 
                                 </div>
 
-                                <div className='flex flex-col items-start h-20 w-1/2 justify-start gap-2'>
+                                <div className='flex flex-col items-start h-20 w-1/2 justify-start gap-2 '>
                                     <label className='text-sm text-primary-subtitle'>RIDE TYPE</label>
                                     <div className='flex gap-3 h-10  bg-primary-card-background border-2 border-primary-card-border
                                     w-full rounded-xl p-1 box-border'>
@@ -192,10 +192,10 @@ const Ride = () => {
                                             Free
                                         </button>
                                     </div>
-                                    {err && <div className="absolute -bottom-5 w-full text-center left-0 text-sm text-red-600 ">
-                                        {err}
-                                    </div>}
                                 </div>
+                                {err && <div className="absolute -bottom-2 w-full text-center left-0 text-sm text-red-600 ">
+                                    {err}
+                                </div>}
 
                             </div>
 
