@@ -9,12 +9,12 @@ const Nav = () => {
 
     return (
         <div className='absolute bottom-0 left-0 h-12 w-full flex items-center justify-around p-2 border-t-2 rounded-t-md  
-        bg-primary-background border-primary-button z-50'>
+        bg-primary-background border-primary-title z-50'>
 
             <div className='flex flex-col items-center justify-center'>
                 <img
                     src={book}
-                    className='h-8 cursor-pointer'
+                    className='h-8 cursor-pointer select-none'
                     onClick={() => navigate('/home')}
                     alt="home"
                 />
@@ -23,7 +23,7 @@ const Nav = () => {
             <div className='flex flex-col items-center justify-center'>
                 <img
                     src={start}
-                    className='h-9 cursor-pointer'
+                    className='h-9 cursor-pointer select-none'
                     onClick={() => navigate('/rider')}
                     alt="rider"
                 />
@@ -32,7 +32,7 @@ const Nav = () => {
             <div className='flex flex-col items-center justify-center'>
                 <img
                     src={profile}
-                    className='h-9 cursor-pointer'
+                    className='h-9 cursor-pointer select-none'
                     onClick={() => navigate('/profile')}
                     alt="profile"
                 />

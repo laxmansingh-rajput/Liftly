@@ -18,13 +18,18 @@ export const insertIntoRider = async (Id, data) => {
         const lineString = `LINESTRING(${polylineToLineString(data.path)})`;
         const sourcePoint = `POINT(${data.source.lng} ${data.source.lat})`;
         const destPoint = `POINT(${data.destination.lng} ${data.destination.lat})`;
+        const initialPathCovered = `LINESTRING(
+  ${data.source.lng} ${data.source.lat},
+  ${data.source.lng} ${data.source.lat}
+)`;
         console.log(data)
-        await connection.execute(`INSERT INTO rider(Id, sourceName, destinationName,path, polyLine,sourceCoordinate,destinationCoordinate, currentCoordinate,paired, paid, vehicleNo)VALUES(?, ?, ?,ST_GeomFromText(?, 4326), ?, ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),?, ?, ?)`,
+        await connection.execute(`INSERT INTO rider(Id, sourceName, destinationName,path,pathCovered, polyLine,sourceCoordinate,destinationCoordinate, currentCoordinate,paired, paid, vehicalNo) VALUES (?, ?, ?,ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326), ?, ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),?, ?, ?)`,
             [
                 Id,
                 data.source?.name ?? null,
                 data.destination?.name ?? null,
                 lineString,
+                initialPathCovered,
                 data.path ?? null,
                 sourcePoint,
                 destPoint,

@@ -16,10 +16,10 @@ const Rider = () => {
 
   const l = useLocation()
 
-  const [uiType, setuiType] = useState((second => {
+  const [uiType, setuiType] = useState(() => {
     let arr = l.pathname.split('/')
     return arr[1];
-  }))
+  })
 
 
   return (
@@ -27,7 +27,7 @@ const Rider = () => {
       {load ? (
         <Loader />
       ) : (
-        <context.Provider value={{ location, setlocation, }}>
+        <context.Provider value={{ location, setlocation, uiType }}>
           <div className='w-full flex flex-col items-center h-screen overflow-y-auto '>
 
             <div className='w-full max-w-md'>
