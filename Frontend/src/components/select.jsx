@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import location from '../assets/location.svg'
 import marker from '../assets/marker.svg'
 import cross from '../assets/back.svg'
 import { useNavigate } from 'react-router-dom'
+import { context } from '../customHooks/useContext.js'
 
-import { APIProvider, Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
+import { APIProvider, Map, AdvancedMarker } from '@vis.gl/react-google-maps';
 
 const Select = ({ center, coordinates, setcoordinates, setselect, field, location, setlocation }) => {
     const navigate = useNavigate()
-
+    const { uiType } = useContext(context)
     if (!coordinates) return <div>Loading...</div>;
     const medicaps = {
         lat: 22.6210,
@@ -23,7 +24,11 @@ const Select = ({ center, coordinates, setcoordinates, setselect, field, locatio
             destination: (field == 2) ? coordinates : medicaps,
         };
         setlocation(updatedLocation)
-        navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        if (uiType == 'rider')
+            navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        else {
+            navigate(`/user?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        }
     }
 
     return (
@@ -35,7 +40,7 @@ const Select = ({ center, coordinates, setcoordinates, setselect, field, locatio
                     <Map
                         defaultZoom={13}
                         defaultCenter={center}
-                        mapId={'4f33a08e76f55bd8683fa07d'}
+                        mapId={import.meta.env.VITE_GOOGLE_MAPS_Id}
                         onCameraChanged={(event) => {
                             setcoordinates(event.detail.center)
                         }}

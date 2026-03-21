@@ -13,7 +13,7 @@ import { getLocation } from '../controller/getlocation'
 
 const Choose = () => {
     const navigate = useNavigate()
-    const { location, setlocation } = useContext(context)
+    const { location, setlocation, uiType } = useContext(context)
     const {
         showBar, setshowBar, center, setcenter,
         suggetions, setsuggetions,
@@ -62,7 +62,13 @@ const Choose = () => {
             destination: (field == 2) ? placeCoordinate : medicaps
         };
         setlocation(updatedLocation)
-        navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+
+        console.log('adasd', uiType)
+        if (uiType == 'rider')
+            navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        else {
+            navigate(`/user?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        }
     }
 
     const handelProceed = async () => {
@@ -75,7 +81,12 @@ const Choose = () => {
             destination: medicaps
         };
         setlocation(updatedLocation)
-        navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        console.log('adasd', uiType)
+        if (uiType == 'rider')
+            navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        else {
+            navigate(`/user?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        }
     }
 
     return (

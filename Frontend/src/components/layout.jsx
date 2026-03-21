@@ -7,6 +7,7 @@ import Home from "./home";
 import Rider from "./rider";
 import Profile from "./profile";
 import Ride from "./ride";
+import User from "./user";
 
 const Layout = ({ page }) => {
     const pages = {
@@ -18,6 +19,7 @@ const Layout = ({ page }) => {
         'rider': <Rider />,
         'profile': <Profile />,
         'ride': <Ride />,
+        'user': <User />,
     };
 
     return (
