@@ -5,13 +5,14 @@ import { insertMap } from '../controller/map'
 import { sendRiderDetails } from '../controller/request'
 import { usePath } from '../customHooks/usePath.js'
 import Map from './map'
-import back from '../assets/cross.svg'
+import back from '../assets/back.svg'
 import { pathContext } from '../customHooks/useContext'
+import { useNavigate } from 'react-router-dom'
 const Ride = () => {
     const [load, setload] = useState(true)
     const [next, setnext, details, setdetails] = useDetails('ride', setload)
     const { path, setpath, alterPaths, setalterPaths, pathIndex, setpathIndex } = usePath()
-
+    const navigate = useNavigate()
     const [data, setdata] = useState({
         source: '',
         destination: '',
@@ -87,7 +88,7 @@ const Ride = () => {
             }
             let responce = await sendRiderDetails(finalJSON)
             if (responce.success) {
-                window.location.href = "http://localhost:5173/searchUser"
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/searchUser`
             } else {
                 generateError('something went wrong')
             }
@@ -103,16 +104,17 @@ const Ride = () => {
                 load ? <Loader /> :
                     <div className='w-full flex flex-col items-center h-full relative'>
 
-                        <div className='border-2 h-1/2  [@media(min-height:700px)]:h-[57vh] [@media(min-height:800px)]:h-[62vh] w-full relatice'>
+                        <div className='border-2 h-1/2  [@media(min-height:700px)]:h-[57vh] [@media(min-height:800px)]:h-[62vh] w-full 
+                        relative'>
                             <pathContext.Provider value={{
                                 location, path, setpath, pathIndex, setpathIndex, alterPaths, setalterPaths
                             }}>
                                 <Map />
                             </pathContext.Provider >
                             <div
-                                className='absolute bottom-2 left-2 flex items-center gap-2 cursor-pointer shadow-md 
-                                    rounded-full px-1 py-0.5 border-2'
-                                onClick={() => { window.location.href = 'http://localhost:5173/rider' }}
+                                className='absolute bottom-10 left-2 flex items-center gap-2 cursor-pointer shadow-md 
+                                    rounded-full px-1 py-0.5 border-2 bg-primary-background'
+                                onClick={() => { navigate('/rider') }}
                             >
                                 <img src={back} className='h-5 ' alt="back" />
                             </div>

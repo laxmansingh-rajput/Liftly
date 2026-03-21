@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const sendLoginDetails = async (data) => {
   try {
-    let response = await axios.post('http://localhost:3000/auth/login', data,
+    let response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, data,
       {
         withCredentials: true
       })
@@ -41,7 +41,7 @@ export const getCoordinates = async (placeId) => {
 export const sendRiderDetails = async (data) => {
   try {
     let response = await axios.post(
-      'http://localhost:3000/feed/rider-details',
+      `${import.meta.env.VITE_BACKEND_URL}/feed/rider-details`,
       data,
       {
         withCredentials: true
@@ -53,3 +53,19 @@ export const sendRiderDetails = async (data) => {
     return null;
   }
 };
+
+export const getRiderDetails = async (data) => {
+  try {
+    let response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/user/`,
+      data,
+      {
+        withCredentials: true
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}

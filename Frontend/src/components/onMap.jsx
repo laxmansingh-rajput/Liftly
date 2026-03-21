@@ -17,7 +17,7 @@ const OnMap = ({ center }) => {
             <Map
                 zoom={13}
                 defaultCenter={center}
-                mapId={'4f33a08e76f55bd8683fa07d'}
+                mapId={import.meta.env.VITE_GOOGLE_MAPS_Id}
                 onCameraChanged={(event) => console.log(event)}
             >
                 <AdvancedMarker position={center}>

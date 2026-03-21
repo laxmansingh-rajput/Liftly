@@ -17,6 +17,8 @@ function App() {
           <Route path="/profile" element={<Layout page={'profile'} />} />
           <Route path="/ride" element={<Layout page={'ride'} />} />
           <Route path="/user" element={<Layout page={'user'} />} />
+          <Route path="/searchUser" element={<Layout page={'searchUser'} />} />
+          <Route path="/SearchRider" element={<Layout page={'SearchRider'} />} />
         </Routes>
       </BrowserRouter>
 

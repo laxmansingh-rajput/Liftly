@@ -33,7 +33,7 @@ passport.use(new GoogleStrategy({
 router.get('/google',
     passport.authenticate('google', {
         scope: ['profile', 'email'],
-        hd: 'medicaps.ac.in',
+        // hd: 'medicaps.ac.in',
         session: false
     }));
 

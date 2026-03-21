@@ -58,14 +58,14 @@ const form = () => {
         }
         setdetails(newDetails)
         const response = await axios.post(
-            "http://localhost:3000/form",
+            `${import.meta.env.VITE_BACKEND_URL}/form`,
             newDetails,
             { withCredentials: true }
         )
         if (response.data.success) {
-            window.location.href = 'http://localhost:5173/phone';
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/phone`;
         } else if (response.data.error && response.data.error == 'Cookies not found') {
-            window.location.href = 'http://localhost:5173/';
+            window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/`;
         }
         console.log(response.data)
     }

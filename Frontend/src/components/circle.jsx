@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useMap } from "@vis.gl/react-google-maps";
 
-const CircleComponent = ({ center, radius }) => {
+const CircleComponent = ({ center, radius, location }) => {
     const map = useMap();
 
     useEffect(() => {
         if (!map || !window.google) return;
-        
+
         const circle = new window.google.maps.Circle({
             map,
             center,

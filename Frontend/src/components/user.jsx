@@ -5,17 +5,23 @@ import back from '../assets/back.svg'
 import plus from '../assets/plus.svg'
 import minus from '../assets/minus.svg'
 import RangeMap from './rangeMap'
+import { useNavigate } from 'react-router-dom'
 
 const user = () => {
     const [load, setload] = useState(true)
     const [next, setnext, details, setdetails] = useDetails('ride', setload)
     const [err, seterr] = useState(null)
     const [radius, setradius] = useState(450)
+    const [Distance, setDistance] = useState(0)
+    const [nearRiderDetails, setnearRiderDetails] = useState([])
+    const [farRiderDetails, setfarRiderDetails] = useState([])
+    const navigate = useNavigate()
+
     const [pointData, setpointData] = useState({
         source: { lat: "", lng: "" },
         destination: { lat: "", lng: "" }
-
     })
+
     const [location, setlocation] = useState({
         source: { lat: "", lng: "", name: "" },
         destination: { lat: "", lng: "", name: "" }
@@ -55,23 +61,36 @@ const user = () => {
         setlocation(newLocation)
     }, [])
 
+    const generateErr = (message) => {
+        setTimeout(() => {
+            seterr(null)
+        }, 3000);
+        seterr(message)
+    }
+
+    const handelProceed = async () => {
+        const data = {
+            source: pointData.source,
+            destination: pointData.destination,
+            sourceName: location.source.name,
+            destinationName: location.destination.name,
+            radius: radius,
+            distance: Distance
+        }
+        let string = JSON.stringify(data)
+        navigate(`/findRider?data=${encodeURIComponent(string)}`)
+    }
+
     return (
         <div>
             {
                 load ? <Loader /> :
                     <div className='w-full flex flex-col items-center h-screen relative'>
 
-                        <div className='border-2 h-2/3  w-full '>
-                            <RangeMap source={pointData.source} destination={pointData.destination} radius={radius} />
-                            <div
-                                className='absolute bottom-2 left-2 flex items-center gap-2 cursor-pointer shadow-md 
-                                    rounded-full px-1 py-0.5 border-2'
-                                onClick={() => { window.location.href = 'http://localhost:5173/home' }}
-                            >
-                                <img src={back} className='h-5 ' alt="back" />
-                            </div>
+                        <div className='border-2 h-2/3  w-full relative'>
+                            <RangeMap location={location} source={pointData.source} destination={pointData.destination} radius={radius} setDistance={setDistance} />
+                            
                         </div>
-
                         <div className='absolute bottom-0 left-0 bg-primary-background rounded-t-xl
                          h-1/3  w-full z-10 flex flex-col justify-around gap-2 p-3  '>
 
@@ -117,6 +136,7 @@ const user = () => {
 
                             <button
                                 className='relative w-full p-3 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium'
+                                onClick={() => handelProceed()}
                             >
                                 Proceed
                             </button>

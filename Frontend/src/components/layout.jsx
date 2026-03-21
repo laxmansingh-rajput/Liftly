@@ -8,7 +8,8 @@ import Rider from "./rider";
 import Profile from "./profile";
 import Ride from "./ride";
 import User from "./user";
-
+import SearchRider from "./searchRider";
+import SearchUser from "./searchUser";
 const Layout = ({ page }) => {
     const pages = {
         'Landing': <Landing />,
@@ -20,6 +21,8 @@ const Layout = ({ page }) => {
         'profile': <Profile />,
         'ride': <Ride />,
         'user': <User />,
+        'searchRider': <SearchRider />,
+        'searchUser': <SearchUser />,
     };
 
     return (

@@ -41,7 +41,7 @@ const Phone = () => {
       try {
 
         let response = await axios.post(
-          "http://localhost:3000/form/phone",
+          `${import.meta.env.VITE_BACKEND_URL}/form/phone`,
           { phone: phone },
           { withCredentials: true }
         )
@@ -69,12 +69,12 @@ const Phone = () => {
       try {
 
         let response = await axios.post(
-          "http://localhost:3000/form/verify-phone",
+          `${import.meta.env.VITE_BACKEND_URL}/form/verify-phone`,
           { phone: phone, otp: otp.join("") },
           { withCredentials: true }
         )
         if (response.data.success) {
-          window.location.href = 'http://localhost:5173/home'
+          window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/home`
         }
       } catch {
         setotperror('Enter valid otp')

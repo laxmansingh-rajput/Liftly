@@ -49,7 +49,7 @@ const login = () => {
                 errorMaker('Server Problem')
             } else {
                 if (response.success) {
-                    window.location.href = 'http://localhost:5173/home'
+                    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/home`
                 } else {
                     errorMaker(response.message)
                 }

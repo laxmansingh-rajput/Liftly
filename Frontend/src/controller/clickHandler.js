@@ -6,17 +6,17 @@ export const goTo = (navigate, page) => {
 
 export const google = (next) => {
     if (next == 'form')
-        window.location.href = 'http://localhost:5173/form';
+        window.location.href =`${import.meta.env.VITE_FRONTEND_URL}/form`;
     else if (next == 'phone')
-        window.location.href = 'http://localhost:5173/phone';
+        window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/phone`;
     else
-        window.location.href = 'http://localhost:3000/auth/google';
+        window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/google`;
 }
 
 export const fetchDetails = async (next, setnext, setdetails, file, setloader) => {
     try {
         const response = await axios.get(
-            "http://localhost:3000/details",
+            `${import.meta.env.VITE_BACKEND_URL}/details`,
             { withCredentials: true }
         );
         let data = response.data
@@ -32,16 +32,16 @@ export const fetchDetails = async (next, setnext, setdetails, file, setloader) =
             } else if (!data.phoneNo) {
                 setnext('phone')
                 if (file == 'form')
-                    window.location.href = 'http://localhost:5173/phone'
+                    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/phone`
             } else {
                 if (file == 'phone' || file == "form")
-                    window.location.href = 'http://localhost:5173/home'
+                    window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/home`
             }
             setloader(false)
         } else {
             setloader(false)
             if (file != 'landing') {
-                window.location.href = 'http://localhost:5173/'
+                window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/`
             }
         }
     } catch (error) {

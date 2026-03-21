@@ -46,3 +46,4 @@ export const insertIntoRider = async (Id, data) => {
         throw err;
     }
 };
+
