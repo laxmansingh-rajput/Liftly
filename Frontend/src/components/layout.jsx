@@ -4,11 +4,11 @@ import Form from "./form";
 import Login from "./login";
 import Phone from "./phone";
 import Home from "./home";
-import Rider from "./rider";
+import Driver from "./driver";
 import Profile from "./profile";
-import Ride from "./ride";
+import Drive from "./drive";
 import User from "./user";
-import SearchRider from "./searchRider";
+import SearchDriver from "./searchDriver";
 import SearchUser from "./searchUser";
 const Layout = ({ page }) => {
     const pages = {
@@ -17,11 +17,11 @@ const Layout = ({ page }) => {
         'login': <Login />,
         'phone': <Phone />,
         'home': <Home />,
-        'rider': <Rider />,
+        'driver': <Driver />,
         'profile': <Profile />,
-        'ride': <Ride />,
+        'drive': <Drive />,
         'user': <User />,
-        'searchRider': <SearchRider />,
+        'searchDriver': <SearchDriver />,
         'searchUser': <SearchUser />,
     };
 

@@ -35,7 +35,7 @@ const Landing = () => {
                             Go to College
                         </div>
                         <div className='text-sm text-primary-subtitle'>
-                            Ride heading to campus
+                            Drive heading to campus
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ const Landing = () => {
                             Go to College
                         </div>
                         <div className='text-sm text-primary-subtitle'>
-                            Ride heading to campus
+                            Drive heading to campus
                         </div>
                     </div>
                 </div>

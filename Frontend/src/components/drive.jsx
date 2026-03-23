@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDetails } from '../customHooks/useDetails'
 import Loader from './loader'
 import { insertMap } from '../controller/map'
-import { sendRiderDetails } from '../controller/request'
+import { sendDriverDetails } from '../controller/request'
 import { usePath } from '../customHooks/usePath.js'
 import Map from './map'
 import back from '../assets/back.svg'
@@ -86,7 +86,7 @@ const Ride = () => {
                 rideType: data.paid ? "paid" : "free",
                 path: path,
             }
-            let responce = await sendRiderDetails(finalJSON)
+            let responce = await sendDriverDetails(finalJSON)
             if (responce.success) {
                 window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/searchUser`
             } else {
@@ -114,7 +114,7 @@ const Ride = () => {
                             <div
                                 className='absolute bottom-10 left-2 flex items-center gap-2 cursor-pointer shadow-md 
                                     rounded-full px-1 py-0.5 border-2 bg-primary-background'
-                                onClick={() => { navigate('/rider') }}
+                                onClick={() => { navigate('/Driver') }}
                             >
                                 <img src={back} className='h-5 ' alt="back" />
                             </div>

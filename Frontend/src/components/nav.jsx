@@ -24,8 +24,8 @@ const Nav = () => {
                 <img
                     src={start}
                     className='h-9 cursor-pointer select-none'
-                    onClick={() => navigate('/rider')}
-                    alt="rider"
+                    onClick={() => navigate('/driver')}
+                    alt="driver"
                 />
             </div>
 

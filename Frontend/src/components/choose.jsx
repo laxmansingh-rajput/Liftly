@@ -64,8 +64,8 @@ const Choose = () => {
         setlocation(updatedLocation)
 
         console.log('adasd', uiType)
-        if (uiType == 'rider')
-            navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        if (uiType == 'driver')
+            navigate(`/drive?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
         else {
             navigate(`/user?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
         }
@@ -82,8 +82,8 @@ const Choose = () => {
         };
         setlocation(updatedLocation)
         console.log('adasd', uiType)
-        if (uiType == 'rider')
-            navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        if (uiType == 'driver')
+            navigate(`/drive?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
         else {
             navigate(`/user?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
         }

@@ -13,7 +13,7 @@ const polylineToLineString = (encoded) => {
     return toReturn.join(", ");
 };
 
-export const insertIntoRider = async (Id, data) => {
+export const insertIntoDriver = async (Id, data) => {
     try {
         const lineString = `LINESTRING(${polylineToLineString(data.path)})`;
         const sourcePoint = `POINT(${data.source.lng} ${data.source.lat})`;
@@ -23,7 +23,7 @@ export const insertIntoRider = async (Id, data) => {
   ${data.source.lng} ${data.source.lat}
 )`;
         console.log(data)
-        await connection.execute(`INSERT INTO rider(Id, sourceName, destinationName,path,pathCovered, polyLine,sourceCoordinate,destinationCoordinate, currentCoordinate,paired, paid, vehicalNo) VALUES (?, ?, ?,ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326), ?, ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),?, ?, ?)`,
+        await connection.execute(`INSERT INTO driver (Id, sourceName, destinationName,path,pathCovered, polyLine,sourceCoordinate,destinationCoordinate, currentCoordinate,paired, paid, vehicalNo) VALUES (?, ?, ?,ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326), ?, ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),ST_GeomFromText(?, 4326),?, ?, ?)`,
             [
                 Id,
                 data.source?.name ?? null,
@@ -40,7 +40,7 @@ export const insertIntoRider = async (Id, data) => {
             ]
         );
 
-        console.log("Rider inserted successfully!");
+        console.log("Driver inserted successfully!");
     } catch (err) {
         console.log(err);
         throw err;

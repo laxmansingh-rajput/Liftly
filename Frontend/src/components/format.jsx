@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom'
 
 const format = () => {
   const [load, setload] = useState(true)
-  const [next, setnext, details, setdetails] = useDetails('rider', setload)
+  const [next, setnext, details, setdetails] = useDetails('driver', setload)
   const [location, setlocation] = useState({
     source: 'Your Location',
     destination: 'Medicaps University'

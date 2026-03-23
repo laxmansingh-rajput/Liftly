@@ -1,6 +1,6 @@
 import React from 'react'
 import Format from './format'
-const Rider = () => {
+const Driver = () => {
     return (
         <div className='h-full w-full '>
             <Format />
@@ -8,4 +8,4 @@ const Rider = () => {
     )
 }
 
-export default Rider
+export default Driver

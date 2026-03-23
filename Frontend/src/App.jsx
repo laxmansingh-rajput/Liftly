@@ -13,16 +13,14 @@ function App() {
           <Route path="/login" element={<Layout page={'login'} />} />
           <Route path="/phone" element={<Layout page={'phone'} />} />
           <Route path="/home" element={<Layout page={'home'} />} />
-          <Route path="/rider" element={<Layout page={'rider'} />} />
+          <Route path="/driver" element={<Layout page={'driver'} />} />
           <Route path="/profile" element={<Layout page={'profile'} />} />
-          <Route path="/ride" element={<Layout page={'ride'} />} />
+          <Route path="/drive" element={<Layout page={'drive'} />} />
           <Route path="/user" element={<Layout page={'user'} />} />
           <Route path="/searchUser" element={<Layout page={'searchUser'} />} />
-          <Route path="/SearchRider" element={<Layout page={'SearchRider'} />} />
+          <Route path="/searchDriver" element={<Layout page={'searchDriver'} />} />
         </Routes>
       </BrowserRouter>
-
-
     </>
   )
 }

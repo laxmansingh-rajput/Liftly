@@ -77,3 +77,30 @@
 Logo background: #f0f4ff — pale blue tint
 "Go to College" icon bg: #ecfdf5 — mint green tint
 "Go from College" icon bg: #eff6ff — light blue tint */
+
+
+.spinner {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: 0 0 0 0 #0004;
+  animation: l2 1.5s infinite linear;
+  position: relative;
+}
+.spinner:before,
+.spinner:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 #0004;
+  animation: inherit;
+  animation-delay: -0.5s;
+}
+.spinner:after {
+  animation-delay: -1s;
+}
+@keyframes l2 {
+    100% {box-shadow: 0 0 0 40px #0000}
+}

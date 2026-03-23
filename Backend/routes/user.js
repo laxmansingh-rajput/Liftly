@@ -1,7 +1,7 @@
 import express from "express";
 import { refreshToken } from "../controller/jwt.js";
 import { queryUserById } from "../model/queryUser.js";
-import { getAvailableRiders } from "../model/getRider.js";
+import { getAvailableDriver } from "../model/getDriver.js";
 
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
         const data = jwt.verify(req.cookies.refreshToken, process.env.jwtSecret);
         const id = data.id;
 
-        const output = await getAvailableRiders(req.body)
+        const output = await getAvailableDriver(req.body)
 
         res.json(output);
 

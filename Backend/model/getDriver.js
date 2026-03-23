@@ -24,7 +24,7 @@ const ToCollege = async (data) => {
                 paired,
                 paid,
                 vehicalNo
-            FROM rider
+            FROM driver
             WHERE paired = 0
               AND destinationName = ?
               AND ST_Intersects(
@@ -41,7 +41,7 @@ const ToCollege = async (data) => {
               AND ST_Distance_Sphere(
                   currentCoordinate,
                   ST_GeomFromText(?, 4326)
-              ) >= ?
+              ) <= ?
             ORDER BY paid
             LIMIT 5
         `;
@@ -62,7 +62,7 @@ const ToCollege = async (data) => {
                     currentCoordinate,
                     ST_GeomFromText(?, 4326)
                 ) as distance
-            FROM rider
+            FROM driver
             WHERE paired = 0
               AND destinationName = ?
               AND ST_Distance_Sphere(
@@ -78,28 +78,28 @@ const ToCollege = async (data) => {
             LIMIT 5
         `;
 
-        const [farRiders] = await connection.execute(farQuery, [
+        const [farDriver] = await connection.execute(farQuery, [
             destinationName,
             userPoint, distanceDeg,
             userPoint, distanceDeg,
             userPoint, distanceFar
         ]);
 
-        const [closeRiders] = await connection.execute(closeQuery, [
+        const [closeDriver] = await connection.execute(closeQuery, [
             userPoint, destinationName,
             userPoint, distance,
             userPoint
         ]);
 
-        const riders = {
-            far: farRiders,
-            close: closeRiders
+        const Drivers = {
+            far: farDriver,
+            close: closeDriver
         }
-        console.log(riders)
-        return riders;
+        console.log(Drivers)
+        return Drivers;
 
     } catch (error) {
-        console.error("Error fetching riders:", error);
+        console.error("Error fetching Drivers:", error);
         throw error;
     }
 }
@@ -128,7 +128,7 @@ const fromCollege = async (data) => {
                 paired,
                 paid,
                 vehicalNo
-            FROM rider
+            FROM driver
             WHERE paired = 0
               AND sourceName = ?
               AND ST_Intersects(
@@ -142,26 +142,26 @@ const fromCollege = async (data) => {
             ORDER BY paid
             LIMIT 5
         `;
-        const [farRiders] = await connection.execute(Query, [
+        const [farDriver] = await connection.execute(Query, [
             data.sourceName,
             userPoint, distanceDeg,
             userPoint, distance
         ]);
 
-        const riders = {
-            far: farRiders,
+        const Drivers = {
+            far: farDriver,
             close: []
         }
-        console.log(riders)
-        return riders;
+        console.log(Drivers)
+        return Drivers;
 
     } catch (error) {
-        console.error("Error fetching riders:", error);
+        console.error("Error fetching Drivers:", error);
         throw error;
     }
 }
 
-export const getAvailableRiders = async (data) => {
+export const getAvailableDriver = async (data) => {
     try {
         let output
         if (data.destinationName == 'Medicaps University') {

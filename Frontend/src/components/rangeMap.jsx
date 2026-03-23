@@ -71,7 +71,7 @@ const RangeMap = ({ source, destination, radius, setDistance, location }) => {
                 <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}>
                     <Map
                         defaultZoom={16}
-                        defaultCenter={source}
+                        defaultCenter={location.source.name == 'Medicaps University' ? destination : source}
                         mapId={import.meta.env.VITE_GOOGLE_MAPS_Id}
                     >
                         <AdvancedMarker position={source}>

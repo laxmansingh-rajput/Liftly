@@ -24,8 +24,8 @@ const Select = ({ center, coordinates, setcoordinates, setselect, field, locatio
             destination: (field == 2) ? coordinates : medicaps,
         };
         setlocation(updatedLocation)
-        if (uiType == 'rider')
-            navigate(`/ride?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
+        if (uiType == 'Driver')
+            navigate(`/drive?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
         else {
             navigate(`/user?data=${JSON.stringify(updatedLocation)}&source=${source}&destination=${destination}`)
         }

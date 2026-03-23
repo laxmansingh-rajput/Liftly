@@ -9,12 +9,10 @@ import { useNavigate } from 'react-router-dom'
 
 const user = () => {
     const [load, setload] = useState(true)
-    const [next, setnext, details, setdetails] = useDetails('ride', setload)
+    const [next, setnext, details, setdetails] = useDetails('drive', setload)
     const [err, seterr] = useState(null)
     const [radius, setradius] = useState(450)
     const [Distance, setDistance] = useState(0)
-    const [nearRiderDetails, setnearRiderDetails] = useState([])
-    const [farRiderDetails, setfarRiderDetails] = useState([])
     const navigate = useNavigate()
 
     const [pointData, setpointData] = useState({
@@ -78,7 +76,7 @@ const user = () => {
             distance: Distance
         }
         let string = JSON.stringify(data)
-        navigate(`/findRider?data=${encodeURIComponent(string)}`)
+        navigate(`/searchDriver?data=${encodeURIComponent(string)}`)
     }
 
     return (
@@ -89,7 +87,7 @@ const user = () => {
 
                         <div className='border-2 h-2/3  w-full relative'>
                             <RangeMap location={location} source={pointData.source} destination={pointData.destination} radius={radius} setDistance={setDistance} />
-                            
+
                         </div>
                         <div className='absolute bottom-0 left-0 bg-primary-background rounded-t-xl
                          h-1/3  w-full z-10 flex flex-col justify-around gap-2 p-3  '>

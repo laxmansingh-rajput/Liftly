@@ -38,10 +38,10 @@ export const getCoordinates = async (placeId) => {
   }
 };
 
-export const sendRiderDetails = async (data) => {
+export const sendDriverDetails = async (data) => {
   try {
     let response = await axios.post(
-      `${import.meta.env.VITE_BACKEND_URL}/feed/rider-details`,
+      `${import.meta.env.VITE_BACKEND_URL}/feed/Driver-details`,
       data,
       {
         withCredentials: true
@@ -54,7 +54,7 @@ export const sendRiderDetails = async (data) => {
   }
 };
 
-export const getRiderDetails = async (data) => {
+export const getDriverDetails = async (data) => {
   try {
     let response = await axios.post(
       `${import.meta.env.VITE_BACKEND_URL}/user/`,

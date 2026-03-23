@@ -6,7 +6,7 @@ export const goTo = (navigate, page) => {
 
 export const google = (next) => {
     if (next == 'form')
-        window.location.href =`${import.meta.env.VITE_FRONTEND_URL}/form`;
+        window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/form`;
     else if (next == 'phone')
         window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/phone`;
     else
@@ -34,7 +34,7 @@ export const fetchDetails = async (next, setnext, setdetails, file, setloader) =
                 if (file == 'form')
                     window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/phone`
             } else {
-                if (file == 'phone' || file == "form")
+                if (file == 'phone' || file == "form" || file == "landing")
                     window.location.href = `${import.meta.env.VITE_FRONTEND_URL}/home`
             }
             setloader(false)

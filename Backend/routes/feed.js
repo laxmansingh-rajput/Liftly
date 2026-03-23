@@ -3,7 +3,7 @@ import { refreshToken } from "../controller/jwt.js";
 import { queryUserById } from "../model/queryUser.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { insertIntoRider } from "../model/insertDetails.js";
+import { insertIntoDriver } from "../model/insertDetails.js";
 dotenv.config();
 
 const router = express.Router();
@@ -46,7 +46,7 @@ router.use(async (req, res, next) => {
 });
 
 
-router.post("/rider-details", async (req, res) => {
+router.post("/Driver-details", async (req, res) => {
     try {
         console.log(req.body)
 
@@ -54,7 +54,7 @@ router.post("/rider-details", async (req, res) => {
 
         const id = data.id;
 
-        await insertIntoRider(id, req.body)
+        await insertIntoDriver(id, req.body)
 
         res.json({
             success: true
